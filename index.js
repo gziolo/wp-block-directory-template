@@ -1,12 +1,34 @@
+/**
+ * External dependencies
+ */
+const { join } = require( 'path' );
+
 module.exports = {
 	defaultValues: {
-		slug: 'block-directory-example',
-		namespace: 'gziolo',
-		title: 'Block Directory Example',
+		slug: 'gutenpride',
+		namespace: 'create-block-tutorial',
+		category: 'text',
+		title: 'Gutenpride',
 		description:
-			'Example block written with ESNext standard and JSX support for publishing to Block Directory.',
-
-		dashicon: 'palmtree',
+			'A Gutenberg block to show your pride! This block enables you to type text and style it with the color font Gilbert from Type with Pride.',
+		dashicon: 'flag',
+		attributes: {
+			message: {
+				type: 'string',
+				source: 'text',
+				selector: 'div',
+			},
+		},
+		supports: {
+			html: false,
+		},
+		npmDependencies: [
+			'@wordpress/block-editor',
+			'@wordpress/blocks',
+			'@wordpress/components',
+			'@wordpress/i18n',
+		],
 	},
-	templatesPath: __dirname,
+	templatesPath: join( __dirname, 'templates' ),
+	assetsPath: join( __dirname, 'assets' ),
 };
