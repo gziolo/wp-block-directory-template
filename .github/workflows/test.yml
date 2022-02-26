@@ -11,7 +11,9 @@ jobs:
             - uses: actions/setup-node@v2
               with:
                   node-version: '16'
-            - run: |
+
+            - name: 'Run verification'
+              run: |
                   npm ci
-                  npm lint:pkg-json
-                  npm lint:js
+                  npm run lint:pkg-json
+                  npm run lint:js
