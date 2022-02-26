@@ -1,12 +1,15 @@
 <?php
 /**
  * Plugin Name:       {{title}}
+{{#pluginURI}}
+ * Plugin URI:        {{{pluginURI}}}
+{{/pluginURI}}
 {{#description}}
  * Description:       {{description}}
 {{/description}}
+ * Version:           {{version}}
  * Requires at least: 5.8
  * Requires PHP:      7.0
- * Version:           {{version}}
 {{#author}}
  * Author:            {{author}}
 {{/author}}
@@ -17,6 +20,12 @@
  * License URI:       {{{licenseURI}}}
 {{/licenseURI}}
  * Text Domain:       {{textdomain}}
+{{#domainPath}}
+ * Domain Path:       {{{domainPath}}}
+{{/domainPath}}
+{{#updateURI}}
+ * Update URI:        {{{updateURI}}}
+{{/updateURI}}
  *
  * @package           {{namespace}}
  */
@@ -26,9 +35,9 @@
  * Behind the scenes, it registers also all assets so they can be enqueued
  * through the block editor in the corresponding context.
  *
- * @see https://developer.wordpress.org/block-editor/tutorials/block-tutorial/writing-your-first-block-type/
+ * @see https://developer.wordpress.org/reference/functions/register_block_type/
  */
 function {{namespaceSnakeCase}}_{{slugSnakeCase}}_block_init() {
-	register_block_type( __DIR__ );
+	register_block_type( __DIR__ . '/build' );
 }
 add_action( 'init', '{{namespaceSnakeCase}}_{{slugSnakeCase}}_block_init' );
