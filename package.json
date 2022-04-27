@@ -1,6 +1,6 @@
 {
 	"name": "wp-block-directory-template",
-	"version": "0.3.0",
+	"version": "0.4.0",
 	"description": "Template for scaffolding WordPress plugin optimized for usage with Block Directory.",
 	"author": "gziolo",
 	"license": "MIT",
