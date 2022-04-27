@@ -21,6 +21,7 @@ module.exports = {
 		supports: {
 			html: false,
 		},
+		wpEnv: true,
 	},
 	pluginTemplatesPath: join( __dirname, 'plugin-templates' ),
 	blockTemplatesPath: join( __dirname, 'block-templates' ),
