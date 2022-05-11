@@ -1,0 +1,46 @@
+name: Publish npm packages
+
+on:
+    workflow_dispatch:
+        inputs:
+            release_type:
+                description: 'Release type'
+                required: true
+                default: patch
+                type: choice
+                choices:
+                    - patch
+                    - minor
+                    - major
+
+# Cancels all previous workflow runs for pull requests that have not completed.
+concurrency:
+    # The concurrency group contains the workflow name and the branch name for pull requests
+    # or the commit hash for any other events.
+    group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.head_ref || github.sha }}
+    cancel-in-progress: true
+
+jobs:
+    patch-release:
+        name: Patch release
+        runs-on: ubuntu-latest
+        if: ${{ github.event.inputs.release_type == 'patch' }}
+        steps:
+            - name: Print the input tag to STDOUT
+              run: echo  The release type is ${{ github.event.inputs.release_type }} ${{ github.ref }}
+
+    minor-release:
+        name: Minor release
+        runs-on: ubuntu-latest
+        if: ${{ github.event.inputs.release_type == 'minor' }}
+        steps:
+            - name: Print the input tag to STDOUT
+              run: echo  The release type is ${{ github.event.inputs.release_type }} ${{ github.ref }}
+
+    major-release:
+        name: Major release
+        runs-on: ubuntu-latest
+        if: ${{ github.event.inputs.release_type == 'major' }}
+        steps:
+            - name: Print the input tag to STDOUT
+              run: echo  The release type is ${{ github.event.inputs.release_type }} ${{ github.ref }}
